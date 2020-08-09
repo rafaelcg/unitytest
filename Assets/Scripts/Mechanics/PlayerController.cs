@@ -25,7 +25,7 @@ namespace Platformer.Mechanics
         /// <summary>
         /// Initial jump velocity at the start of a jump.
         /// </summary>
-        public float jumpTakeOffSpeed = 7;
+        public float jumpTakeOffSpeed = 50;
 
         public JumpState jumpState = JumpState.Grounded;
         private bool stopJump;
@@ -53,6 +53,15 @@ namespace Platformer.Mechanics
 
         protected override void Update()
         {
+
+            if(Input.GetKeyDown(KeyCode.LeftShift)){
+                maxSpeed = 10;
+            }
+
+            if(Input.GetKeyUp(KeyCode.LeftShift)){
+                maxSpeed = 7;
+            }
+
             if (controlEnabled)
             {
                 move.x = Input.GetAxis("Horizontal");
